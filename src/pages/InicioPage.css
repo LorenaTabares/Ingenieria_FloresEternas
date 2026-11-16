@@ -1,0 +1,309 @@
+/* CADA SECCIÓN OCUPA EL 100% DE LA PANTALLA VISIBLE */
+.inicio-hero,
+.inicio-seccion-pantalla {
+  min-height: calc(100vh - 108px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 4%;
+}
+
+/* 1. HERO (BANNER PRINCIPAL) */
+.inicio-hero {
+  background-color: #fdece6;
+}
+
+.inicio-hero-contenedor {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+.inicio-hero-texto {
+  flex: 1 1 500px;
+}
+
+.inicio-pildora {
+  background-color: #e2d9f3;
+  color: #7a6899;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 0.8px;
+}
+
+.inicio-hero-titulo {
+  font-family: Georgia, serif;
+  font-size: 64px;
+  color: #b395c7;
+  margin: 22px 0;
+  line-height: 1.08;
+}
+
+.inicio-hero-descripcion {
+  color: #555555;
+  line-height: 1.7;
+  margin-bottom: 32px;
+  font-size: 18px;
+  max-width: 560px;
+}
+
+.inicio-boton-hero {
+  display: inline-block;
+  background-color: #a695b8;
+  color: white;
+  padding: 15px 36px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.inicio-hero-circulo {
+  width: 430px;
+  height: 430px;
+  border-radius: 50%;
+  background-color: white;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  margin: 0 auto;
+}
+
+.inicio-hero-imagen {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* TARJETAS BLANCAS GRANDES (SOBRE NOSOTROS, INSPIRACIÓN, PROCESO, FAQ) */
+.inicio-tarjeta-blanca {
+  max-width: 1280px;
+  width: 100%;
+  min-height: 76vh;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: 28px;
+  padding: 60px 65px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.inicio-seccion-ancha {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.inicio-titulo-centrado {
+  font-family: Georgia, serif;
+  font-size: 40px;
+  text-align: center;
+  color: #333333;
+  margin-bottom: 10px;
+}
+
+.inicio-subtitulo-centrado {
+  text-align: center;
+  color: #666666;
+  font-size: 16px;
+  margin-bottom: 45px;
+}
+
+/* 2. SOBRE NOSOTROS */
+.inicio-sobre-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: 50px;
+  align-items: center;
+}
+
+.inicio-logo-grande {
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  border: 5px solid #f3e5f5;
+  overflow: hidden;
+  margin: 0 auto;
+  box-shadow: 0 0 35px rgba(180, 140, 210, 0.3);
+}
+
+.inicio-img-logo-grande {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.inicio-titulo-izq {
+  font-family: Georgia, serif;
+  font-size: 38px;
+  margin-bottom: 20px;
+  color: #333333;
+}
+
+.inicio-parrafo {
+  color: #555555;
+  line-height: 1.75;
+  margin-bottom: 16px;
+  font-size: 16px;
+}
+
+/* 3. CARRUSEL INSPIRACIÓN FLORAL */
+.inicio-carrusel-contenedor {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.inicio-boton-carrusel {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: none;
+  background-color: #a695b8;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  flex-shrink: 0;
+  z-index: 2;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.inicio-galeria-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+  margin: 0 -18px; /* Hace que las flechas queden sobre los bordes como en la foto */
+}
+
+.inicio-foto-galeria {
+  background-color: #f8eef9;
+  border-radius: 20px;
+  height: 340px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+.inicio-img-galeria {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* 4. NUESTROS MÁS VENDIDOS */
+.inicio-productos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 26px;
+}
+
+/* 5. PROCESO CREATIVO */
+.inicio-pasos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 35px;
+  margin-top: 45px;
+  text-align: center;
+}
+
+.inicio-paso-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.inicio-icono-paso {
+  width: 72px;
+  height: 72px;
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+}
+
+.paso-naranja { background-color: #ffedd5; }
+.paso-azul    { background-color: #e0e7ff; }
+.paso-rosa    { background-color: #fce7f3; }
+.paso-verde   { background-color: #dcfce7; }
+
+.inicio-paso-titulo {
+  font-family: Georgia, serif;
+  font-size: 19px;
+}
+
+.inicio-paso-texto {
+  font-size: 15px;
+  color: #666666;
+  line-height: 1.6;
+}
+
+/* 6. BENEFICIOS */
+.inicio-beneficios-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+  margin-bottom: 40px;
+}
+
+.inicio-tarjeta-beneficio {
+  background-color: white;
+  border-radius: 22px;
+  padding: 38px 28px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.inicio-icono-beneficio {
+  font-size: 36px;
+  color: #d689a3;
+}
+
+/* 7. PREGUNTAS FRECUENTES */
+.inicio-lista-faq {
+  margin-top: 25px;
+}
+
+.inicio-item-faq {
+  border-bottom: 1px solid #eeeeee;
+  padding: 20px 0;
+}
+
+.inicio-boton-faq {
+  width: 100%;
+  background: none;
+  border: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 17px;
+  font-weight: 600;
+  color: #333333;
+  cursor: pointer;
+  text-align: left;
+}
+
+.inicio-signo-faq {
+  color: #d689a3;
+  font-size: 24px;
+}
+
+.inicio-respuesta-faq {
+  margin-top: 12px;
+  font-size: 15px;
+  color: #666666;
+  line-height: 1.6;
+}

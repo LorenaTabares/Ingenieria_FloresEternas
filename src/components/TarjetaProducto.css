@@ -1,0 +1,83 @@
+.tarjeta-producto {
+  background-color: white;
+  border-radius: 22px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.tarjeta-etiqueta {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background-color: #f8c8dc;
+  color: #7a4b63;
+  padding: 5px 14px;
+  border-radius: 14px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.tarjeta-caja-imagen {
+  background-color: #f3e5f5;
+  height: 290px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tarjeta-imagen {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tarjeta-contenido {
+  padding: 26px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.tarjeta-titulo {
+  font-family: Georgia, serif;
+  font-size: 22px;
+  color: #333333;
+}
+
+.tarjeta-descripcion {
+  font-size: 14px;
+  color: #777777;
+  line-height: 1.5;
+}
+
+.tarjeta-precio {
+  font-weight: bold;
+  color: #8e7ba3;
+  font-size: 17px;
+  margin-top: auto;
+  padding-top: 6px;
+}
+
+.tarjeta-boton {
+  margin-top: 10px;
+  padding: 10px 26px;
+  border-radius: 22px;
+  border: 1px solid #999999;
+  background-color: white;
+  color: #444444;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  align-self: center;
+}
+
+.tarjeta-boton:hover {
+  background-color: #a695b8;
+  color: white;
+  border-color: #a695b8;
+}
