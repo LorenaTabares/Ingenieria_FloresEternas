@@ -28,9 +28,11 @@ export function Navbar() {
               <i className="fa-solid fa-magnifying-glass"></i>
             </button>
           </div>
-          <div className="navbar-icono-usuario">
+          
+          {/* Cambiamos el div por Link apuntando a /login */}
+          <Link to="/login" className="navbar-icono-usuario" title="Iniciar Sesión">
             <i className="fa-solid fa-user"></i>
-          </div>
+          </Link>
         </div>
       </div>
     </header>
