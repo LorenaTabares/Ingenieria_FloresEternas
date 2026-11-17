@@ -3,88 +3,56 @@ import { useNavigate } from 'react-router-dom';
 import { IMAGENES } from '../assets/imagenes';
 import './LoginPage.css';
 
-const API_URL = "http://localhost:3000/api";
-
 export function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [mostrarPass, setMostrarPass] = useState(false);
+  const [cargando, setCargando] = useState(false);
+  const [mensaje, setMensaje] = useState({ texto: '', tipo: '' });
+
   const navigate = useNavigate();
 
-  // 1. LOGIN TRADICIONAL O REGISTRO AUTOMÁTICO SI ES NUEVO
-  const handleLoginSubmit = async (e) => {
+  const handleLoginSubmit = (e) => {
     e.preventDefault();
+    setCargando(true);
 
-    try {
-      const response = await fetch(`${API_URL}/login/tradicional`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
+    // Extraemos el nombre a partir del correo (ej: juan@correo.com -> juan)
+    const nombreUsuario = email.split('@')[0];
+
+    setTimeout(() => {
+      localStorage.setItem('usuarioNombre', nombreUsuario);
+      localStorage.setItem('usuarioEmail', email);
+
+      setMensaje({
+        texto: `¡Bienvenida de nuevo, ${nombreUsuario}! Redirigiendo a la tienda...`,
+        tipo: 'exito'
       });
 
-      if (response.ok) {
-        const data = await response.json();
-        alert(`¡Bienvenido de nuevo, ${data.usuario.nombre}!`);
-
-        localStorage.setItem('clienteID', data.usuario.clienteID);
-        navigate('/'); // Redirige al inicio en React
-      } else {
-        alert("Usuario no encontrado en Nicore Flowers. Creando una cuenta nueva para ti...");
-        const nombreTemporal = email.split('@')[0];
-
-        const registroResponse = await fetch(`${API_URL}/registro/tradicional`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, password, nombre: nombreTemporal })
-        });
-
-        if (registroResponse.ok) {
-          const registroData = await registroResponse.json();
-          alert(`¡Cuenta creada con éxito!\nBienvenida a Flores Eternas.`);
-
-          localStorage.setItem('clienteID', registroData.usuario.clienteID);
-          navigate('/');
-        } else {
-          const errorText = await registroResponse.text();
-          alert("Error al intentar registrarse: " + errorText);
-        }
-      }
-    } catch (error) {
-      console.error("Error de conexión:", error);
-      alert("No se pudo conectar con el servidor local. Verifica que tu backend esté encendido.");
-    }
+      setTimeout(() => {
+        setCargando(false);
+        navigate('/');
+      }, 1200);
+    }, 600);
   };
 
-  // 2. LOGUEARSE O REGISTRARSE CON GOOGLE (Simulación Conectada)
-  const handleGoogleLogin = async () => {
-    alert("Conectando con Google... Generando registro automático en base de datos.");
+  const handleGoogleLogin = () => {
+    setCargando(true);
+    setMensaje({ texto: "Conectando con cuenta de Google...", tipo: 'info' });
 
-    const usuarioGoogleSimulado = {
-      idGoogle: "google_user_lore_" + Math.floor(Math.random() * 10000),
-      nombre: "Lorena Flores",
-      email: "lorena.prueba@gmail.com",
-      fotoUrl: "https://via.placeholder.com/150"
-    };
+    setTimeout(() => {
+      localStorage.setItem('usuarioNombre', 'Lorena Flores');
+      localStorage.setItem('usuarioEmail', 'lorena.flores@gmail.com');
 
-    try {
-      const response = await fetch(`${API_URL}/login/google`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(usuarioGoogleSimulado)
+      setMensaje({
+        texto: "¡Acceso exitoso con Google! Bienvenida, Lorena Flores.",
+        tipo: 'exito'
       });
 
-      const data = await response.json();
-
-      if (response.ok) {
-        alert(`¡Registro Exitoso vía Google! Guardado en SQL Server.\nBienvenido: ${data.usuario.nombre}`);
-        localStorage.setItem('clienteID', data.usuario.clienteID);
+      setTimeout(() => {
+        setCargando(false);
         navigate('/');
-      } else {
-        alert("El servidor rechazó el registro de Google.");
-      }
-    } catch (error) {
-      console.error("Error de conexión:", error);
-      alert("Error al intentar comunicarse con el servidor Node.js.");
-    }
+      }, 1200);
+    }, 800);
   };
 
   return (
@@ -99,6 +67,12 @@ export function LoginPage() {
         <div className="login-form-container">
           <h2>Iniciar Sesión</h2>
 
+          {mensaje.texto && (
+            <div className={`alerta-login alerta-${mensaje.tipo}`}>
+              {mensaje.texto}
+            </div>
+          )}
+
           <form onSubmit={handleLoginSubmit}>
             <div className="input-group">
               <label>Email</label>
@@ -107,40 +81,57 @@ export function LoginPage() {
                 placeholder="tu@correo.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                disabled={cargando}
                 required
               />
             </div>
 
             <div className="input-group">
               <label>Contraseña</label>
-              <input
-                type="password"
-                placeholder="••••••••"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
+              <div className="password-wrapper">
+                <input
+                  type={mostrarPass ? "text" : "password"}
+                  placeholder="••••••••"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  disabled={cargando}
+                  required
+                />
+                <button
+                  type="button"
+                  className="btn-ver-pass"
+                  onClick={() => setMostrarPass(!mostrarPass)}
+                >
+                  {mostrarPass ? "Ocultar" : "Ver"}
+                </button>
+              </div>
             </div>
 
             <div className="form-options">
               <a href="#recuperar" className="forgot-link">¿Olvidaste tu contraseña?</a>
             </div>
-            <br />
 
-            <button type="submit" className="btn-login">Entrar</button>
+            <button type="submit" className="btn-login" disabled={cargando}>
+              {cargando ? "Ingresando..." : "Entrar"}
+            </button>
           </form>
 
           <div className="divider">
             <span>o continúa con</span>
           </div>
 
-          <button type="button" className="btn-google" onClick={handleGoogleLogin}>
+          <button
+            type="button"
+            className="btn-google"
+            onClick={handleGoogleLogin}
+            disabled={cargando}
+          >
             <img src={IMAGENES.gogli} alt="Google" />
             Iniciar sesión con Google
           </button>
 
           <p className="register-text">
-            ¿No tienes cuenta? <a href="#registro">Regístrate aquí</a>
+            ¿No tienes cuenta? <span>Ingresa tus datos arriba para acceder al instante.</span>
           </p>
         </div>
       </div>
