@@ -30,9 +30,25 @@ export function CompraPage() {
 
     setProcesando(true);
 
-    // Simulamos el procesamiento del pago
     setTimeout(() => {
-      // Limpia el carrito del localStorage porque ya se compraron los productos
+      // 1. Creamos el objeto con los datos de la compra realizada
+      const nuevaCompra = {
+        id: Date.now(),
+        cliente: localStorage.getItem('usuarioNombre') || 'Cliente Invitado',
+        email: localStorage.getItem('usuarioEmail') || 'No registrado',
+        productos: carrito.map((item) => item.nombre).join(', '),
+        cantidad: carrito.length,
+        total: totalCompra,
+        metodoPago: metodoPago.toUpperCase(),
+        fecha: new Date().toLocaleDateString('es-CO')
+      };
+
+      // 2. Guardamos en el historial de compras en localStorage
+      const historialCompras = JSON.parse(localStorage.getItem('comprasRealizadas')) || [];
+      historialCompras.push(nuevaCompra);
+      localStorage.setItem('comprasRealizadas', JSON.stringify(historialCompras));
+
+      // 3. Limpiamos el carrito
       localStorage.removeItem('carrito');
       setCarrito([]);
 

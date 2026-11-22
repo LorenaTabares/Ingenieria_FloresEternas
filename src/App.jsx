@@ -8,6 +8,8 @@ import { CarritoPage } from './pages/CarritoPage';
 import { CompraPage } from './pages/CompraPage';
 import { TiposFloresPage } from './pages/TiposFloresPage';
 import { ContactoPage } from './pages/ContactoPage';
+import { AdminUsuariosPage } from './pages/AdminUsuariosPage';
+import { AdminComprasPage } from './pages/AdminComprasPage';
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <Route path="/carrito" element={<CarritoPage />} />
         <Route path="/compra" element={<CompraPage />} />
         <Route path="/contacto" element={<ContactoPage />} />
+        <Route path="/admin/usuarios" element={<AdminUsuariosPage />} />
+        <Route path="/admin/compras" element={<AdminComprasPage />} />
       </Routes>
 
       <Footer />

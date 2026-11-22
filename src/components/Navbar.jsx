@@ -19,6 +19,7 @@ export function Navbar() {
             <span>Carrito</span>
           </Link>
           <Link to="/contacto" className="navbar-link">Contacto</Link>
+          <Link to="/admin/usuarios" className="navbar-link">Admin</Link>
         </nav>
 
         <div className="navbar-acciones">
@@ -28,7 +29,7 @@ export function Navbar() {
               <i className="fa-solid fa-magnifying-glass"></i>
             </button>
           </div>
-          
+
           {/* Cambiamos el div por Link apuntando a /login */}
           <Link to="/login" className="navbar-icono-usuario" title="Iniciar Sesión">
             <i className="fa-solid fa-user"></i>

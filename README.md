@@ -1,16 +1,39 @@
-# React + Vite
+# 🌸 Flores Eternas Nicore — Plataforma E-Commerce
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Aplicación web tipo **SPA (Single Page Application)** desarrollada con **React + Vite** para la comercialización de arreglos florales artesanales elaborados en cinta de satén y limpiapipas (*chenille*).
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 📋 Descripción del Proyecto
 
-## React Compiler
+**Flores Eternas Nicore** permite a los clientes explorar un catálogo interactivo con filtro de precios, personalizar tipos de flores y colores con cotización directa vía WhatsApp, gestionar un carrito de compras, simular pagos y administrar registros desde un módulo administrativo.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Funcionalidades Principales
+* **Landing Page:** Presentación de la marca, galería de inspiración floral con carrusel interactivo, productos destacados, proceso creativo y preguntas frecuentes.
+* **Catálogo Interactivo:** Listado de arreglos florales con filtro dinámico por rango de precio y adición al carrito.
+* **Tipos de Flores:** Selector interactivo de variantes de color (rosas, tulipanes y girasoles) conectado con cotización personalizada por WhatsApp.
+* **Carrito y Pasarela de Compra:** Gestión de artículos seleccionados, cálculo automático de totales y confirmación de pago.
+* **Autenticación:** Registro de nuevos clientes, inicio de sesión y recuperación de contraseña.
+* **Módulo de Administración:** Visualización en tablas de los usuarios registrados y el historial de compras realizadas.
 
-## Expanding the Oxlint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## 🛠️ Tecnologías y Arquitectura
+
+* **Frontend:** React 19, Vite, React Router DOM (`react-router-dom`), CSS3 modular y Font Awesome.
+* **Persistencia de Datos:** Web Storage API (`localStorage`) para gestionar el estado de sesión, usuarios registrados, carrito de compras e historial de pedidos en el navegador sin requerir servidor externo.
+* **Arquitectura:** Separación modular por responsabilidades (`components/` para piezas reutilizables, `pages/` para vistas completas y `assets/` para gestión centralizada de recursos multimedia).
+
+---
+
+## 🚀 Instrucciones de Instalación y Ejecución Local
+
+### Requisitos previos
+* Tener instalado **Node.js** (versión 18 o superior).
+
+### Pasos para ejecutar el proyecto
+
+1. **Clonar el repositorio:**
+   ```bash
+   git clone [https://github.com/tu-usuario/Ingenieria_FloresEternas.git](https://github.com/tu-usuario/Ingenieria_FloresEternas.git)
+   cd Ingenieria_FloresEternas
