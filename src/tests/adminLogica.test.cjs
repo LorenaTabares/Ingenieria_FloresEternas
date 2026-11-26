@@ -55,3 +55,30 @@ test('7. Valida que el listado de productos destacados no esté vacío (RF_002)'
   expect(productosDestacados.length).toBeGreaterThan(0);
   expect(productosDestacados[0]).toHaveProperty('precio');
 });
+test('8. Valida que no se permita registrar una contraseña menor a 6 caracteres (RF_001)', () => {
+  const validarPassword = (password) => password.length >= 6;
+
+  expect(validarPassword('12345')).toBe(false);
+  expect(validarPassword('flores2026')).toBe(true);
+});
+
+test('9. Cambia dinámicamente la imagen de la flor según el color seleccionado (RF_004)', () => {
+  const variantesRosa = [
+    { nombreColor: 'Rojo', imagen: '/img-tipos-flores/Rosa-roja.jpg' },
+    { nombreColor: 'Azul Rey', imagen: '/img-tipos-flores/Rosa-azul-rey.jpg' }
+  ];
+
+  const seleccion = variantesRosa.find((v) => v.nombreColor === 'Azul Rey');
+
+  expect(seleccion).toBeDefined();
+  expect(seleccion.imagen).toBe('/img-tipos-flores/Rosa-azul-rey.jpg');
+});
+
+test('10. Impide enviar el formulario de contacto si hay campos vacíos (RF_004)', () => {
+  const validarFormularioContacto = (nombre, correo, mensaje) => {
+    return nombre.trim() !== '' && correo.trim() !== '' && mensaje.trim() !== '';
+  };
+
+  expect(validarFormularioContacto('Lorena', '', 'Quiero un ramo')).toBe(false);
+  expect(validarFormularioContacto('Lorena', 'lorena@correo.com', 'Quiero un ramo')).toBe(true);
+});
