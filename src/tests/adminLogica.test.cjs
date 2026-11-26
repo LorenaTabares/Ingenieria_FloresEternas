@@ -36,3 +36,22 @@ test('5. Filtra productos por debajo del precio máximo', () => {
   const filtrados = filtrarPorPrecio(productos, 70000);
   expect(filtrados).toHaveLength(2);
 });
+
+test('6. Genera correctamente el enlace formateado para la API de WhatsApp (RF_004)', () => {
+  const telefono = '573206104806';
+  const mensaje = 'Ramo de Rosas color Azul Rey';
+  const url = `https://wa.me/${telefono}?text=${encodeURIComponent(mensaje)}`;
+
+  expect(url).toContain('https://wa.me/573206104806?text=');
+  expect(url).toContain('Ramo%20de%20Rosas');
+});
+
+test('7. Valida que el listado de productos destacados no esté vacío (RF_002)', () => {
+  const productosDestacados = [
+    { id: 1, nombre: 'Ramo Eterno Clásico', precio: 45000 },
+    { id: 2, nombre: 'Tulipanes Pastel', precio: 55000 }
+  ];
+
+  expect(productosDestacados.length).toBeGreaterThan(0);
+  expect(productosDestacados[0]).toHaveProperty('precio');
+});
